@@ -6,8 +6,14 @@ from logging.handlers import RotatingFileHandler
 
 class Logging():
     def __init__(self, filename="./app.log"):
-        self.print_console()
+        self.basic_config()
         self.rotating_log(filename)
+        
+    def basic_config(self):
+        logging.basicConfig(level=logging.INFO,
+                format="[%(asctime)s][%(levelname)s]%(message)s",
+                datefmt="%Y-%m-%d %H:%M:%S",
+                filemode='a')
 
     def print_console(self, level=logging.INFO):
         #打印到控制台
